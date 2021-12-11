@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'title' => 'Comfy'
+    ]);
+});
+
+Route::get('/login', function(){
+    return view('accounts.login', [
+        'title' => 'Comfy | Login'
+    ]);
 });

@@ -7,7 +7,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="icon" href="img/single-bed.png">
-    <title>Comfy</title>
+    <title>{{$title}}</title>
 </head>
 <body class="bg-blue-50">
 

@@ -10,7 +10,14 @@
                 <a href="#" class="font-semibold text-gray-400 hover:text-gray-700">Discover</a>
                 <a href="#" class="font-semibold text-gray-400 hover:text-gray-700">Special Offer</a>
                 <a href="#" class="font-semibold text-gray-400 hover:text-gray-700">About Us</a>
-                <button type="submit" class="w-24 h-8 -mt-1 font-semibold text-indigo-500 ring-2 rounded-lg hover:bg-blue-600 hover:text-white">Login</button>
+                <button type="submit" class="w-24 h-8 -mt-1 font-semibold text-indigo-500 ring-2 rounded-lg hover:bg-blue-600 hover:text-white" id="login-btn">
+                    Login
+                    {{-- @if ($title == 'Comfy')
+                        <a href="/login">Login</a>
+                    @elseif($title == 'Comfy | Login')
+                        <a href="/register">Register</a>
+                    @endif --}}
+                </button>
             </div>
         </div>
 </div>
