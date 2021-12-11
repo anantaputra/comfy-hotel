@@ -56,35 +56,89 @@
     </div>
 </div>
 <div class="-mt-20 popup-login mb-32 hidden">
-<div class="absolute bg-white h-3/4 w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
-    <div class="flex justify-end mr-4 mt-4">
-        <svg xmlns="http://www.w3.org/2000/svg" id="close-btn" class="h-5 w-5 cursor-pointer hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
-    </div>
-    <div class="mx-auto grid place-items-center py-2">
-        <strong class="text-3xl block">Login</strong>
-        <form action="/login" method="post" class="mt-8 space-y-4 w-full px-10">
-            @csrf
-            <div class="space-y-1">
-                <label for="username">Username</label>
-                <input type="text" class="w-full border border-gray-500 rounded-md px-3 py-2">
+    <div class="absolute bg-white h-3/4 w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
+        <div class="flex justify-end mr-4 mt-4">
+            <svg xmlns="http://www.w3.org/2000/svg" id="close-login-btn" class="h-5 w-5 cursor-pointer hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <div class="mx-auto grid place-items-center py-2">
+            <strong class="text-3xl block">Login</strong>
+            <form action="/login" method="post" class="mt-8 space-y-4 w-full px-10">
+                @csrf
+                <div class="space-y-1">
+                    <label for="username">Username</label>
+                    <input type="text" class="w-full border border-gray-500 rounded-md px-3 py-2" id="username">
+                </div>
+                <div class="space-y-1">
+                    <label for="password">Password</label>
+                    <input type="password" class="w-full border border-gray-500 rounded-md px-3 py-2" id="password">
+                </div>
+                <div>
+                    <span class="text-blue-500 hover:text-blue-600"><a href="">Forget password?</a></span>
+                </div>
+                <div>
+                    <button type="submit" class="w-full h-10 -mt-1 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
+                        <a href="/login">Login</a>
+                    </button>
+                </div>
+            </form>
+            <div class="flex space-x-2 mt-2">
+                <span>No Account? </span>
+                <button class="text-blue-500 hover:text-blue-600" id="register-btn">Create one here</button>
             </div>
-            <div class="space-y-1">
-                <label for="password">Password</label>
-                <input type="password" class="w-full border border-gray-500 rounded-md px-3 py-2">
-            </div>
-            <div>
-                <span>Forget password?</span>
-            </div>
-            <div>
-                <button type="submit" class="w-full h-10 -mt-1 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
-                    <a href="/login">Login</a>
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
+<div class="popup-signup -mt-32 mb-44 hidden">
+    <div class="absolute bg-white h-auto w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
+        <div class="flex justify-end mr-4 mt-4">
+            <svg xmlns="http://www.w3.org/2000/svg" id="close-register-btn" class="h-5 w-5 cursor-pointer hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <div class="mx-auto grid place-items-center py-2">
+            <strong class="text-3xl block -mt-2">Register</strong>
+            <form action="/login" method="post" class="-mt-2 space-y-2 w-full px-10">
+                @csrf
+                <div class="flex space-x-3">
+                    <div class="w-1/2 space-y-1">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="firstname">
+                    </div>
+                    <div class="w-1/2 space-y-1">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="lastname">
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <label for="email">Email address</label>
+                    <input type="text" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="email">
+                </div>
+                <div class="space-y-1">
+                    <label for="password">Choose password</label>
+                    <input type="password" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="password">
+                </div>
+                <div class="space-y-1">
+                    <label for="confirmpassword">Confirm password</label>
+                    <input type="password" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="confirmpassword">
+                </div>
+                <div class="space-y-1">
+                    <label for="phone">Phone number</label>
+                    <input type="text" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="phone">
+                </div>
+                <div>
+                    <button type="submit" class="w-full h-10 mt-2 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
+                        <a href="/register">Register</a>
+                    </button>
+                </div>
+            </form>
+            <div class="flex space-x-2 mt-2 mb-4">
+                <span>Already have account? </span>
+                <button class="text-blue-500 hover:text-blue-600">Sign in</button>
+            </div>
+        </div>
+    </div>
 </div>
 <span class="flex font-bold text-lg mt-12">Explore Nearby</span>
 <div class="grid grid-cols-4 gap-4 mt-4">
@@ -178,8 +232,15 @@
     document.getElementById('login-btn').addEventListener("click", function(){
         document.querySelector('.popup-login').style.display = "block"
     })
-    document.getElementById('close-btn').addEventListener("click", function(){
+    document.getElementById('close-login-btn').addEventListener("click", function(){
         document.querySelector('.popup-login').style.display = "none"
+    })
+    document.getElementById('register-btn').addEventListener("click", function(){
+        document.querySelector('.popup-login').style.display = "none"
+        document.querySelector('.popup-signup').style.display = "block"
+    })
+    document.getElementById('close-register-btn').addEventListener("click", function(){
+        document.querySelector('.popup-signup').style.display = "none"
     })
 </script>
 
