@@ -64,7 +64,7 @@
 
 {{-- form login popup --}}
 <div class="-mt-20 popup-login mb-32 hidden">
-    <div class="absolute bg-white h-3/4 w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
+    <div class="absolute bg-white h-auto w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
         <div class="flex justify-end mr-4 mt-4">
             <svg xmlns="http://www.w3.org/2000/svg" id="close-login-btn" class="h-5 w-5 cursor-pointer hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -76,11 +76,17 @@
                 @csrf
                 <div class="space-y-1">
                     <label for="email">Email</label>
-                    <input type="text" class="w-full border border-gray-500 rounded-md px-3 py-2" id="email">
+                    <input type="text" name="email_login" class="w-full border border-gray-500 rounded-md px-3 py-2 @error('email_login') is-invalid @enderror" id="email">
+                    @error('email_login')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="space-y-1">
                     <label for="password">Password</label>
-                    <input type="password" class="w-full border border-gray-500 rounded-md px-3 py-2" id="password">
+                    <input type="password" name="password" class="w-full border border-gray-500 rounded-md px-3 py-2 @error('password') is-invalid @enderror" id="password">
+                    @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div>
                     <input type="checkbox" name="show" id="show">
@@ -95,7 +101,7 @@
                     </button>
                 </div>
             </form>
-            <div class="flex space-x-2 mt-2">
+            <div class="flex space-x-2 mt-2 mb-4">
                 <span>No Account? </span>
                 <button class="text-blue-500 hover:text-blue-600" id="register-btn">Create one here</button>
             </div>
@@ -182,13 +188,19 @@
 </div>
 {{-- end of form register popup --}}
 
-{{-- error validation register form --}}
+{{-- error validation form --}}
 @if (Session::has('errors'))
-    <script>
-        document.querySelector('.popup-signup').style.display = 'block'
-    </script>
+    @if ($errors->has('email_login') || $errors->has('password'))
+        <script>
+            document.querySelector('.popup-login').style.display = 'block'
+        </script>
+    @else
+        <script>
+            document.querySelector('.popup-signup').style.display = 'block'
+        </script>
+    @endif
 @endif
-{{-- end of error validation register form --}}
+{{-- end of error validation form --}}
 
 {{-- destination nearby --}}
 <span class="flex font-bold text-lg mt-12">Explore Nearby</span>
