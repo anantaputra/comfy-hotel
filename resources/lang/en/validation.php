@@ -139,8 +139,35 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'firstname' => [
+            'required' => 'Firstname is required.',
+            'not_regex' => 'Firstname format is invalid.',
+            'max' => 'Firstname must not be greater than 255 characters.',
+        ],
+        'lastname' => [
+            'not_regex' => 'Lastname format is invalid.',
+            'max' => 'Firstname must not be greater than 255 characters.',
+        ],
+        'email' => [
+            'required' => 'Email is required.',
+            'unique' => 'Email has already been taken.'
+        ],
+        'password_register' => [
+            'required' => 'Password is required.',
+            'min' => 'Password must be at least 8 characters.',
+            'regex' => 'Password must contain at least one number, uppercase and lowercase.',
+        ],
+        'confirmpassword' => [
+            'required' => 'Password confirmation is required.',
+            'min' => 'Password must be at least 8 characters.',
+            'same' => 'Password confirmation does not match.'
+        ],
+        'phone_number' => [
+            'required' => 'Phone number is required.',
+            'unique' => 'Phone number has already been taken.',
+            'not_regex' => 'Phone number format is invalid.',
+            'min' => 'Phone number must be at least 9 characters.',
+            'max' => 'Phone number must not be greater than 12 characters.'
         ],
     ],
 

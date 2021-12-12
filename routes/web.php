@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,5 @@ Route::get('/login', function(){
         'title' => 'Comfy | Login'
     ]);
 });
+
+Route::post('/register', [RegisterController::class, 'store']);

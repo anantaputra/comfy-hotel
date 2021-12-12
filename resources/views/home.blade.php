@@ -2,15 +2,20 @@
 
 @section('container')
 
+{{-- slogan --}}
 <div class="flex">
     <div class="block mt-20 w-1/2">
         <span class="font-semibold text-6xl">Make yourself feel </span>
         <span class="font-semibold text-6xl flex mt-4">comfy on holiday</span>
     </div>
+    {{-- foto objek wisata --}}
     <div class="w-1/2 mt-8 ml-4">
         <img src="img/jogja123.png" alt="banner" style="height: 430px" class="rounded-xl">
     </div>
 </div>
+{{-- end of slogan --}}
+
+{{-- search bar --}}
 <div class="h-32 w-1/2 bg-white -mt-52 rounded-xl shadow-xl absolute">
     <div class="flex space-x-8 py-10 px-8">
         <div class="block">
@@ -55,6 +60,9 @@
         </button>
     </div>
 </div>
+{{-- end of search bar --}}
+
+{{-- form login popup --}}
 <div class="-mt-20 popup-login mb-32 hidden">
     <div class="absolute bg-white h-3/4 w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
         <div class="flex justify-end mr-4 mt-4">
@@ -67,19 +75,23 @@
             <form action="/login" method="post" class="mt-8 space-y-4 w-full px-10">
                 @csrf
                 <div class="space-y-1">
-                    <label for="username">Username</label>
-                    <input type="text" class="w-full border border-gray-500 rounded-md px-3 py-2" id="username">
+                    <label for="email">Email</label>
+                    <input type="text" class="w-full border border-gray-500 rounded-md px-3 py-2" id="email">
                 </div>
                 <div class="space-y-1">
                     <label for="password">Password</label>
                     <input type="password" class="w-full border border-gray-500 rounded-md px-3 py-2" id="password">
                 </div>
                 <div>
+                    <input type="checkbox" name="show" id="show">
+                    <label for="show">Tampilkan sandi</label>
+                </div>
+                <div>
                     <span class="text-blue-500 hover:text-blue-600"><a href="">Forget password?</a></span>
                 </div>
                 <div>
                     <button type="submit" class="w-full h-10 -mt-1 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
-                        <a href="/login">Login</a>
+                        Login
                     </button>
                 </div>
             </form>
@@ -90,6 +102,9 @@
         </div>
     </div>
 </div>
+{{-- end of form login popup --}}
+
+{{-- form register popup --}}
 <div class="popup-signup -mt-32 mb-44 hidden">
     <div class="absolute bg-white h-auto w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
         <div class="flex justify-end mr-4 mt-4">
@@ -99,37 +114,62 @@
         </div>
         <div class="mx-auto grid place-items-center py-2">
             <strong class="text-3xl block -mt-2">Register</strong>
-            <form action="/login" method="post" class="-mt-2 space-y-2 w-full px-10">
+            <form action="/register" method="post" class=" space-y-2 w-full px-10">
                 @csrf
                 <div class="flex space-x-3">
                     <div class="w-1/2 space-y-1">
                         <label for="firstname">Firstname</label>
-                        <input type="text" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="firstname">
+                        <input type="text" name="firstname" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('firstname') is-invalid @enderror" id="firstname">
+                        @error('firstname')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-1/2 space-y-1">
                         <label for="lastname">Lastname</label>
-                        <input type="text" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="lastname">
+                        <input type="text" name="lastname" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('lastname') is-invalid @enderror" id="lastname">
+                        @error('lastname')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="space-y-1">
                     <label for="email">Email address</label>
-                    <input type="text" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="email">
+                    <input type="text" name="email" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('email') is-invalid @enderror" id="email">
+                    @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="space-y-1">
-                    <label for="password">Choose password</label>
-                    <input type="password" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="password">
+                    <label for="password-register">Choose password</label>
+                    <input type="password" name="password_register" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('password_register') is-invalid @enderror" id="password-register">
+                    @error('password_register')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="space-y-1">
                     <label for="confirmpassword">Confirm password</label>
-                    <input type="password" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="confirmpassword">
+                    <input type="password" name="confirmpassword" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('confirmpassword') is-invalid @enderror" id="confirmpassword">
+                    @error('confirmpassword')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="space-y-1">
                     <label for="phone">Phone number</label>
-                    <input type="text" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none" id="phone">
+                    <div class="flex relative">
+                        <input type="text" name="phone_number" class="w-full border border-blue-400 rounded-md pl-12 pr-3 py-2 focus:outline-none @error('phone_number') is-invalid @enderror" id="phone">
+                        <label class="h-full absolute py-2 px-2 bg-gray-200 border border-blue-400">+62</label>
+                    </div>
+                    @error('phone_number')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div>
+                    <input type="checkbox" name="show-register" id="show-register">
+                    <label for="show-register">Tampilkan sandi</label>
                 </div>
                 <div>
                     <button type="submit" class="w-full h-10 mt-2 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
-                        <a href="/register">Register</a>
+                        Register
                     </button>
                 </div>
             </form>
@@ -140,6 +180,17 @@
         </div>
     </div>
 </div>
+{{-- end of form register popup --}}
+
+{{-- error validation register form --}}
+@if (Session::has('errors'))
+    <script>
+        document.querySelector('.popup-signup').style.display = 'block'
+    </script>
+@endif
+{{-- end of error validation register form --}}
+
+{{-- destination nearby --}}
 <span class="flex font-bold text-lg mt-12">Explore Nearby</span>
 <div class="grid grid-cols-4 gap-4 mt-4">
     <div class="flex h-24 w-50 mb-10 items-center">
@@ -199,6 +250,9 @@
         </div>
     </div>
 </div>
+{{-- end of destination nearby --}}
+
+{{-- partnership --}}
 <div class="h-80 w-full mt-32 rounded-t-lg bg-blue-100">
     <div class="pt-32">
         <div class="w-72 h-auto mx-auto grid place-items-center">
@@ -222,11 +276,7 @@
         <img src="https://source.unsplash.com/80x100?male-barista" alt="wanita" class="rounded-md -mt-40 ml-80">
     </div>
 </div>
-{{-- <div class="w-full mt-20 mb-2">
-<svg viewBox="0 0 1440 550" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 20.7774C0 9.43276 9.42592 0.359553 20.7623 0.791982L668.5 25.5H806.5H958L1418.94 1.11399C1430.39 0.508508 1440 9.62525 1440 21.0861V430C1440 441.046 1431.05 550 1420 550H20C8.95431 550 0 441.046 0 430V20.7774Z" fill="#F9D0D0"/>
-</svg>    
-</div> --}}
+{{-- end of partnership --}}
 
 <script>
     document.getElementById('login-btn').addEventListener("click", function(){
@@ -242,6 +292,29 @@
     document.getElementById('close-register-btn').addEventListener("click", function(){
         document.querySelector('.popup-signup').style.display = "none"
     })
+    var show = false
+    document.getElementById('show').addEventListener("click",function(){
+        if(show){
+            document.getElementById('password').setAttribute("type", "password")
+            show = false
+        } else {
+            document.getElementById('password').setAttribute("type", "text")
+            show = true
+        }
+    })
+    
+    document.getElementById('show-register').addEventListener("click",function(){
+        if(show){
+            document.getElementById('password-register').setAttribute("type", "password")
+            document.getElementById('confirmpassword').setAttribute("type", "password")
+            show = false
+        } else {
+            document.getElementById('password-register').setAttribute("type", "text")
+            document.getElementById('confirmpassword').setAttribute("type", "text")
+            show = true
+        }
+    })
+
 </script>
 
 @endsection
