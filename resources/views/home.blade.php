@@ -76,8 +76,8 @@
                 @csrf
                 <div class="space-y-1">
                     <label for="email">Email</label>
-                    <input type="text" name="email_login" class="w-full border border-gray-500 rounded-md px-3 py-2 @error('email_login') is-invalid @enderror" id="email">
-                    @error('email_login')
+                    <input type="text" name="email" class="w-full border border-gray-500 rounded-md px-3 py-2 @error('email') is-invalid @enderror" id="email">
+                    @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -139,9 +139,9 @@
                     </div>
                 </div>
                 <div class="space-y-1">
-                    <label for="email">Email address</label>
-                    <input type="text" name="email" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('email') is-invalid @enderror" id="email">
-                    @error('email')
+                    <label for="email_register">Email address</label>
+                    <input type="text" name="email_register" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('email_register') is-invalid @enderror" id="email_register">
+                    @error('email_register')
                             <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -190,7 +190,7 @@
 
 {{-- error validation form --}}
 @if (Session::has('errors'))
-    @if ($errors->has('email_login') || $errors->has('password'))
+    @if ($errors->has('email') || $errors->has('password'))
         <script>
             document.querySelector('.popup-login').style.display = 'block'
         </script>
