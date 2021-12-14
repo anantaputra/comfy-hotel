@@ -19,5 +19,10 @@
 
     </div>
 
+    <script src="js/home.js"></script>
+
+    {{-- datepicker tailwind --}}
+    <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/datepicker.bundle.js"></script>
+
 </body>
 </html>

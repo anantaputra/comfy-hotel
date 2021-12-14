@@ -28,33 +28,38 @@
                     <span class="font-semibold text-lg cursor-pointer">Location</span>
                 </div>
             </label>
-            <form action="/location" method="post" class="w-32">
-                @csrf
-                <div>
-                    <input type="text" id="lokasi" class="ml-7 w-full focus:outline-none" placeholder="Your destination?">
+            <div>
+                <input type="text" id="lokasi" class="ml-7 w-full focus:outline-none" placeholder="Your destination?">
+            </div>
+        </div>
+        <div class="block">
+            <label for="check-in">
+                <div class="flex items-center mb-2 space-x-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="font-semibold text-lg cursor-pointer">Check in</span>
                 </div>
-            </form>
+            </label>
+            <div class="relative">
+                <input datepicker type="text" class="ml-7 w-full focus:outline-none cursor-text" id="check-in" placeholder="--Select date--">
+            </div>
         </div>
         <div class="block">
-            <div class="flex items-center mb-2 space-x-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span class="font-semibold text-lg cursor-pointer">Check in</span>
+            <label for="check-out">
+                <div class="flex items-center mb-2 space-x-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="font-semibold text-lg cursor-pointer">Check out</span>
+                </div>
+            </label>
+            <div class="relative">
+                <input datepicker type="text" class="ml-7 w-full focus:outline-none cursor-text" id="check-out" placeholder="--Select date--">
             </div>
-            <span class="text-gray-400 ml-7 cursor-pointer">09 Desember 2021</span>
-        </div>
-        <div class="block">
-            <div class="flex items-center mb-2 space-x-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span class="font-semibold text-lg cursor-pointer">Check out</span>
-            </div>
-            <span class="text-gray-400 ml-7 cursor-pointer">09 Desember 2021</span>
         </div>
         <button class="bg-blue-500 w-14 h-14 rounded-lg ring-1 hover:bg-blue-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 ml-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 m-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
         </button>
@@ -290,43 +295,5 @@
 </div>
 {{-- end of partnership --}}
 
-<script>
-    document.getElementById('login-btn').addEventListener("click", function(){
-        document.querySelector('.popup-login').style.display = "block"
-    })
-    document.getElementById('close-login-btn').addEventListener("click", function(){
-        document.querySelector('.popup-login').style.display = "none"
-    })
-    document.getElementById('register-btn').addEventListener("click", function(){
-        document.querySelector('.popup-login').style.display = "none"
-        document.querySelector('.popup-signup').style.display = "block"
-    })
-    document.getElementById('close-register-btn').addEventListener("click", function(){
-        document.querySelector('.popup-signup').style.display = "none"
-    })
-    var show = false
-    document.getElementById('show').addEventListener("click",function(){
-        if(show){
-            document.getElementById('password').setAttribute("type", "password")
-            show = false
-        } else {
-            document.getElementById('password').setAttribute("type", "text")
-            show = true
-        }
-    })
-    
-    document.getElementById('show-register').addEventListener("click",function(){
-        if(show){
-            document.getElementById('password-register').setAttribute("type", "password")
-            document.getElementById('confirmpassword').setAttribute("type", "password")
-            show = false
-        } else {
-            document.getElementById('password-register').setAttribute("type", "text")
-            document.getElementById('confirmpassword').setAttribute("type", "text")
-            show = true
-        }
-    })
-
-</script>
 
 @endsection
