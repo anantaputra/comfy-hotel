@@ -29,7 +29,7 @@
                 </div>
             </label>
             <div>
-                <input type="text" id="lokasi" class="ml-7 w-full focus:outline-none" placeholder="Your destination?">
+                <input type="text" id="lokasi" name="lokasi" class="ml-7 w-full focus:outline-none" autocomplete="off" placeholder="Your destination?" onfocus="lokasi()">
             </div>
         </div>
         <div class="block">
@@ -66,6 +66,21 @@
     </div>
 </div>
 {{-- end of search bar --}}
+
+{{-- cities name box --}}
+<div class="absolute w-1/3 hidden" id="location">
+    <div class="h-40 overflow-auto bg-white shadow-md border rounded-md relative -mt-24">
+        @foreach ($city as $item)
+            <button class="flex h-auto w-full py-2 items-center pl-6 border cursor-pointer hover:bg-blue-50" onclick="chooseCity()">
+                <span class="id-city{{ $item->id }} hidden">{{ $item->id }}</span>
+                <span class="kota">{{ $item->city }},</span>
+                <span>&nbsp;</span>
+                <span class="negara">{{ $item->country }}</span>
+            </button>
+        @endforeach
+    </div>
+</div>
+{{-- end of cities name box --}}
 
 {{-- form login popup --}}
 <div class="-mt-20 popup-login mb-32 hidden">
@@ -295,5 +310,22 @@
 </div>
 {{-- end of partnership --}}
 
+<script>
+    $(document).ready(function(){
+        $('#lokasi').on('keyup', function(){
+            var query = $(this).val();
+            console.log(query)
+            $.ajax({
+                url:'city',
+                type:'GET',
+                data:{'lokasi':query},
+                success:function(data){
+                    $('#location').html(data)
+                }
+            })
+            document.querySelector('#location').style.display = 'block'
+        })
+    })
+</script>
 
 @endsection

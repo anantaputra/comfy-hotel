@@ -33,3 +33,17 @@ document.getElementById('show-register').addEventListener("click",function(){
         show = true
     }
 })
+
+var loc = false 
+var locationBox = document.getElementById('location')
+locationBox.style.display = "none"
+
+function lokasi(){
+    if(loc){
+        locationBox.style.display = "none"
+        loc = false
+    } else {
+        locationBox.style.display = "block"
+        loc = true
+    }
+}

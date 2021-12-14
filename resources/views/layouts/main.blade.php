@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="icon" href="img/single-bed.png">
     <title>{{$title}}</title>
 </head>
@@ -23,6 +26,8 @@
 
     {{-- datepicker tailwind --}}
     <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/datepicker.bundle.js"></script>
+
+    {{-- <script src="js/jquery.js"></script> --}}
 
 </body>
 </html>

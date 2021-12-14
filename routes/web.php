@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\City;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\RegisterController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +16,9 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'title' => 'Comfy'
-    ]);
-})->name('home');
+Route::get('/', [PageController::class, 'home']);
+
+Route::get('/city', [PageController::class, 'search']);
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 
