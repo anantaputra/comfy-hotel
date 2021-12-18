@@ -8,9 +8,21 @@ document.getElementById('register-btn').addEventListener("click", function(){
     document.querySelector('.popup-login').style.display = "none"
     document.querySelector('.popup-signup').style.display = "block"
 })
+document.getElementById('signin-btn').addEventListener("click", function(){
+    document.querySelector('.popup-signup').style.display = "none"
+    document.querySelector('.popup-login').style.display = "block"
+})
 document.getElementById('close-register-btn').addEventListener("click", function(){
     document.querySelector('.popup-signup').style.display = "none"
 })
+document.getElementById('forgot-pass').addEventListener("click", function(){
+    document.querySelector('.popup-login').style.display = "none"
+    document.querySelector('.popup-forgot').style.display = "block"
+})
+document.getElementById('close-forgot-btn').addEventListener("click", function(){
+    document.querySelector('.popup-forgot').style.display = "none"
+})
+
 var show = false
 document.getElementById('show').addEventListener("click",function(){
     if(show){
@@ -33,3 +45,4 @@ document.getElementById('show-register').addEventListener("click",function(){
         show = true
     }
 })
+

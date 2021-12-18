@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ForgotPasswordController;
 use App\Models\City;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -16,14 +18,16 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'title' => 'Comfy'
-    ]);
-})->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home');
+
+Route::get('/hotel', [PageController::class, 'hotel']);
+
+Route::post('/pesan', [PageController::class, 'pesan']);
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/forget-password', [ForgotPasswordController::class, 'showForgotPasswordForm']);

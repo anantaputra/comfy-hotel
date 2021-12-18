@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCityNames extends Migration
+class CreateRoomSize extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCityNames extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('room_size', function (Blueprint $table) {
             $table->id();
-            $table->string('city')->unique();
-            $table->string('country');
+            $table->string('room_name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateCityNames extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('room_size');
     }
 }

@@ -29,7 +29,14 @@
                 </div>
             </label>
             <div>
-                <input type="text" id="lokasi" class="ml-7 w-full focus:outline-none" placeholder="Your destination?">
+                <form action="/hotel">
+                {{-- <input type="text" id="lokasi" class="ml-7 w-full focus:outline-none" placeholder="Your destination?"> --}}
+                <select name="lokasi" id="lokasi" class="@error('lokasi') is-invalid @enderror">
+                    <option selected disabled>Your destination?</option>
+                    @foreach ($cities as $city)
+                        <option value="{{ $city->city }}">{{ $city->city }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="block">
@@ -42,7 +49,7 @@
                 </div>
             </label>
             <div class="relative">
-                <input datepicker type="text" class="ml-7 w-full focus:outline-none cursor-text" id="check-in" placeholder="--Select date--">
+                <input datepicker type="text" name="checkin" class="ml-7 w-full focus:outline-none cursor-text" id="check-in" placeholder="--Select date--">
             </div>
         </div>
         <div class="block">
@@ -55,7 +62,7 @@
                 </div>
             </label>
             <div class="relative">
-                <input datepicker type="text" class="ml-7 w-full focus:outline-none cursor-text" id="check-out" placeholder="--Select date--">
+                <input datepicker type="text" name="checkout" class="ml-7 w-full focus:outline-none cursor-text" id="check-out" placeholder="--Select date--">
             </div>
         </div>
         <button class="bg-blue-500 w-14 h-14 rounded-lg ring-1 hover:bg-blue-600">
@@ -63,6 +70,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
         </button>
+                </form>
     </div>
 </div>
 {{-- end of search bar --}}
@@ -98,7 +106,7 @@
                     <label for="show">Tampilkan sandi</label>
                 </div>
                 <div>
-                    <span class="text-blue-500 hover:text-blue-600"><a href="">Forget password?</a></span>
+                    <span class="text-blue-500 hover:text-blue-600 cursor-pointer" id="forgot-pass">Forget password?</span>
                 </div>
                 <div>
                     <button type="submit" class="w-full h-10 -mt-1 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
@@ -186,18 +194,52 @@
             </form>
             <div class="flex space-x-2 mt-2 mb-4">
                 <span>Already have account? </span>
-                <button class="text-blue-500 hover:text-blue-600">Sign in</button>
+                <button class="text-blue-500 hover:text-blue-600" id="signin-btn">Sign in</button>
             </div>
         </div>
     </div>
 </div>
 {{-- end of form register popup --}}
 
+{{-- forgot password form --}}
+<div class="popup-forgot mb-32 hidden">
+    <div class="absolute bg-white h-auto w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
+        <div class="flex justify-end mr-4 mt-4">
+            <svg xmlns="http://www.w3.org/2000/svg" id="close-forgot-btn" class="h-5 w-5 cursor-pointer hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <div class="mx-auto grid place-items-center py-2">
+            <strong class="text-2xl block -mt-2">Forgot your password?</strong>
+                <form action="/forgot-password" method="post" class="pb-8 space-y-4 w-full px-10">
+                    @csrf
+                    <div class="space-y-1">
+                        <label for="emailForgot">Email address</label>
+                        <input type="text" name="emailForgot" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('emailForgot') is-invalid @enderror" id="emailForgot" placeholder="Email address">
+                        @error('emailForgot')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full h-10 mt-2 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
+                            Send Email
+                        </button>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+{{-- end of forgot password form --}}
+
 {{-- error validation form --}}
 @if (Session::has('errors'))
     @if ($errors->has('email') || $errors->has('password'))
         <script>
             document.querySelector('.popup-login').style.display = 'block'
+        </script>
+    @elseif ($errors->has('lokasi'))
+        <script>
+            alert('Pilih tujuan')
         </script>
     @else
         <script>

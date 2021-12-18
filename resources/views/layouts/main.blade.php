@@ -9,7 +9,7 @@
     <link rel="icon" href="img/single-bed.png">
     <title>{{$title}}</title>
 </head>
-<body class="bg-blue-50">
+<body class="bg-blue-50" onload="today()">
 
     @include('partials.navbar')
 
@@ -23,6 +23,19 @@
 
     {{-- datepicker tailwind --}}
     <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/datepicker.bundle.js"></script>
+
+    <script>
+        function today(){
+            const today = new Date()
+            let date = today.getDate()
+            let month = today.getMonth() + 1
+            let year = today.getFullYear()
+
+            document.querySelector('#check-in').value = date+"/"+month+"/"+year
+            document.querySelector('#check-out').value = date + 1+"/"+month+"/"+year
+
+        }
+    </script>
 
 </body>
 </html>
