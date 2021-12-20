@@ -30,4 +30,14 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/forget-password', [ForgotPasswordController::class, 'showForgotPasswordForm']);
+// Route::get('/coba', function(){
+//     return view('password.reset', [
+//         'title' => 'Reset Password'
+//     ]);
+// });
+
+Route::post('/forgot-password', [ForgotPasswordController::class, 'submitForgotPassword']);
+
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
