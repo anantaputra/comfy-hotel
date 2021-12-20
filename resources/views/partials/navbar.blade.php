@@ -42,9 +42,7 @@
                     </div>
                 </div>
                 @else
-                    <button type="submit" class="w-24 h-8 -mt-1 font-semibold text-indigo-500 ring-2 rounded-lg hover:bg-blue-600 hover:text-white" id="login-btn">
-                        Login
-                    </button>
+                <button type="button" class="w-24 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 -mt-2.5" id="login-btn">Login</button>
                 @endif
             </div>
         </div>

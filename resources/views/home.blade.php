@@ -49,7 +49,7 @@
                 </div>
             </label>
             <div class="relative">
-                <input datepicker type="text" name="checkin" class="ml-7 w-full focus:outline-none cursor-text" id="check-in" placeholder="--Select date--">
+                <input datepicker type="text" name="checkin" autocomplete="off" class="ml-7 w-full focus:outline-none cursor-text" id="check-in" placeholder="--Select date--">
             </div>
         </div>
         <div class="block">
@@ -62,7 +62,7 @@
                 </div>
             </label>
             <div class="relative">
-                <input datepicker type="text" name="checkout" class="ml-7 w-full focus:outline-none cursor-text" id="check-out" placeholder="--Select date--">
+                <input datepicker type="text" name="checkout" autocomplete="off" class="ml-7 w-full focus:outline-none cursor-text" id="check-out" placeholder="--Select date--">
             </div>
         </div>
         <button class="bg-blue-500 w-14 h-14 rounded-lg ring-1 hover:bg-blue-600">
@@ -89,14 +89,14 @@
                 @csrf
                 <div class="space-y-1">
                     <label for="email">Email</label>
-                    <input type="text" name="email" class="w-full border border-gray-500 rounded-md px-3 py-2 @error('email') is-invalid @enderror" id="email">
+                    <input type="text" name="email" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('email') is-invalid @enderror" id="email">
                     @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="space-y-1">
                     <label for="password">Password</label>
-                    <input type="password" name="password" class="w-full border border-gray-500 rounded-md px-3 py-2 @error('password') is-invalid @enderror" id="password">
+                    <input type="password" name="password" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('password') is-invalid @enderror" id="password">
                     @error('password')
                             <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -133,7 +133,7 @@
         </div>
         <div class="mx-auto grid place-items-center py-2">
             <strong class="text-3xl block -mt-2">Register</strong>
-            <form action="/register" method="post" class=" space-y-2 w-full px-10">
+            <form action="/register" method="post" class="space-y-2 w-full px-10">
                 @csrf
                 <div class="flex space-x-3">
                     <div class="w-1/2 space-y-1">
@@ -231,6 +231,21 @@
 </div>
 {{-- end of forgot password form --}}
 
+{{-- alert message for success send reset password link --}}
+@if (Session::has('message'))
+    <div id="alert-3" class="flex p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
+        <svg class="flex-shrink-0 w-5 h-5 text-green-700 dark:text-green-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+        <div class="ml-3 text-sm font-medium text-green-700 dark:text-green-800">
+            {{ Session::get('message') }}
+        </div>
+        <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300" data-collapse-toggle="alert-3" aria-label="Close">
+        <span class="sr-only">Close</span>
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+    </div>
+@endif
+{{-- end of it --}}
+
 {{-- error validation form --}}
 @if (Session::has('errors'))
     @if ($errors->has('email') || $errors->has('password'))
@@ -320,7 +335,7 @@
             <span class="text-md font-medium -mt-1">new opportunities by sharing </span> 
             <span class="text-md font-medium -mt-1">your space</span>
         </div>
-        <button class="rounded-sm shadow-sm ring-1 bg-blue-500 text-white w-28 h-10 mx-auto grid place-items-center mt-4 hover:bg-blue-600">Learn more</button>
+        <button class="rounded-sm shadow-sm ring-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-white w-28 h-10 mx-auto grid place-items-center mt-4 hover:bg-gradient-to-bl">Learn more</button>
     </div>
 </div>
 <div class="absolute grid grid-cols-2 gap-96">
