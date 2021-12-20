@@ -77,7 +77,7 @@
 
 {{-- form login popup --}}
 <div class="-mt-20 popup-login mb-32 hidden">
-    <div class="absolute bg-white h-auto w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
+    <div class="absolute bg-white h-auto w-1/3 -mt-96 mx-auto border rounded-md shadow-lg" style="margin-left: 30%">
         <div class="flex justify-end mr-4 mt-4">
             <svg xmlns="http://www.w3.org/2000/svg" id="close-login-btn" class="h-5 w-5 cursor-pointer hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -123,9 +123,23 @@
 </div>
 {{-- end of form login popup --}}
 
+{{-- error login --}}
+@if (Session::has('loginError'))   
+    <div class="popup-gagal absolute grid grid-cols-1 place-items-center space-y-2 bg-white h-auto w-52 py-2 -mt-80 border rounded-md shadow-lg" style="margin-left: 37%">
+        <span class="block">{{ Session::get('loginError') }}</span>
+        <button class="w-20 bg-blue-500 border rounded-md shadow-md text-white ok-btn">OK</button>
+    </div> 
+    <script>
+        document.querySelector('.ok-btn').addEventListener('click', function(){
+            document.querySelector('.popup-gagal').style.display = 'none'
+        })
+    </script>
+@endif
+{{-- end of error login --}}
+
 {{-- form register popup --}}
 <div class="popup-signup -mt-32 mb-44 hidden">
-    <div class="absolute bg-white h-auto w-1/3 -mt-96 mx-auto rounded-md shadow-lg" style="margin-left: 30%">
+    <div class="absolute bg-white h-auto w-1/3 -mt-96 mx-auto border rounded-md shadow-lg" style="margin-left: 30%">
         <div class="flex justify-end mr-4 mt-4">
             <svg xmlns="http://www.w3.org/2000/svg" id="close-register-btn" class="h-5 w-5 cursor-pointer hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
