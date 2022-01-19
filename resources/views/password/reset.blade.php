@@ -65,7 +65,7 @@
                     </div>
                     <div>
                         <button type="submit" class="w-full h-12 mt-2 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
-                            Login
+                            Reset Password
                         </button>
                     </div>
                 </form>

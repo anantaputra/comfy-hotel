@@ -12,17 +12,11 @@
 </head>
 <body class="bg-blue-50" onload="today()">
 
-    @include('partials.navbar')
-
     <div class="min-w-full px-20">
 
         @yield('container')
 
     </div>
-
-    <script src="js/home.js"></script>
-
-    <script src="js/summary.js"></script>
 
     {{-- datepicker tailwind --}}
     <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/datepicker.bundle.js"></script>

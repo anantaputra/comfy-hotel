@@ -1,5 +1,7 @@
-@extends('layouts.main')
+@extends('layouts.dashboard-main')
 
 @section('container')
-    Login
+    
+
+
 @endsection
