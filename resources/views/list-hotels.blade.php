@@ -32,5 +32,7 @@
     </div>
 
 @endforeach
+
+{{ $hotels->links() }}
     
 @endsection

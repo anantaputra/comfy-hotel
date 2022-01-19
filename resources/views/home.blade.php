@@ -49,7 +49,7 @@
                 </div>
             </label>
             <div class="relative">
-                <input datepicker type="text" name="checkin" autocomplete="off" class="ml-7 w-full focus:outline-none cursor-text" id="check-in" placeholder="--Select date--">
+                <input datepicker datepicker-format="dd/m/yyyy" type="text" autocomplete="off" name="checkin" class="ml-7 w-full focus:outline-none cursor-text" id="check-in" placeholder="--Select date--">
             </div>
         </div>
         <div class="block">
@@ -62,7 +62,7 @@
                 </div>
             </label>
             <div class="relative">
-                <input datepicker type="text" name="checkout" autocomplete="off" class="ml-7 w-full focus:outline-none cursor-text" id="check-out" placeholder="--Select date--">
+                <input datepicker datepicker-format="dd/m/yyyy" type="text" autocomplete="off" name="checkout" class="ml-7 w-full focus:outline-none cursor-text" id="check-out" placeholder="--Select date--">
             </div>
         </div>
         <button class="bg-blue-500 w-14 h-14 rounded-lg ring-1 hover:bg-blue-600">
@@ -225,21 +225,21 @@
         </div>
         <div class="mx-auto grid place-items-center py-2">
             <strong class="text-2xl block -mt-2">Forgot your password?</strong>
-                <form action="/forgot-password" method="post" class="pb-8 space-y-4 w-full px-10">
-                    @csrf
-                    <div class="space-y-1">
-                        <label for="emailForgot">Email address</label>
-                        <input type="text" name="emailForgot" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('emailForgot') is-invalid @enderror" id="emailForgot" placeholder="Email address">
-                        @error('emailForgot')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div>
-                        <button type="submit" class="w-full h-10 mt-2 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
-                            Send Email
-                        </button>
-                    </div>
-                </form>
+            <form action="/forgot-password" method="post" class="pb-8 space-y-4 w-full px-10">
+                @csrf
+                <div class="space-y-1">
+                    <label for="emailForgot">Email address</label>
+                    <input type="text" name="emailForgot" class="w-full border border-blue-400 rounded-md px-3 py-2 focus:outline-none @error('emailForgot') is-invalid @enderror" id="emailForgot" placeholder="Email address">
+                    @error('emailForgot')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div>
+                    <button type="submit" class="w-full h-10 mt-2 font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-700">
+                        Send Email
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

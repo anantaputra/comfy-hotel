@@ -38,7 +38,8 @@ class PageController extends Controller
                 ->select('hotels.nama_hotel', 'room_size.room_name', 'cities.city', 
                 'hotel_rooms.price', 'hotel_rooms.rating')
                 ->where('cities.city', '=', $lokasi)
-                ->get();
+                ->paginate(5);
+        $hotel->appends(['lokasi' => $lokasi]);
 
         return view('list-hotels', [
             'title' => 'Hotels in '.$lokasi,
@@ -58,7 +59,13 @@ class PageController extends Controller
         $in = $request->in;
         $out = $request->out;
 
-        return $hotel.$room.$city.$price.$in.$out;
+        return view('summary', [
+            'title' => $hotel,
+            'room' => $room,
+            'price' => $price,
+            'in' => $in,
+            'out' => $out
+        ]);
 
     }
 }
