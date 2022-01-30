@@ -1,4 +1,5 @@
 <div class="min-w-full flex justify-between container px-20 my-8">
+    {{-- icon --}}
         <div class="flex">
             <a href="/">
                 <div class="flex items-center space-x-4 cursor-pointer" id="icon">
@@ -7,6 +8,7 @@
                 </div>
             </a>
         </div>
+        {{-- navbar --}}
         <div class="flex mt-2">
             <div class="flex space-x-14">
                 <a href="#" class="font-semibold text-gray-400 hover:text-gray-700">Discover</a>

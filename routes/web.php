@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\api\PaymentController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Models\City;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\RegisterController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,14 +33,20 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::any('/sum', function(){
-    return view('summary', [
+    return view('payment.main', [
         'title' => 'Summary'
     ]);
 });
 
-Route::post('payment', function(){
-    return 'payment';
-});
+Route::post('payment', [PaymentController::class, 'BankTransferMidtrans']);
+
+Route::post('bank', [PaymentController::class, 'transferBank']);
+
+Route::post('credit-pay', [PaymentController::class, 'CreditCardMidtrans']);
+
+// Route::post('bank-transfer', function(Request $request){
+//     return $request->bank_name;
+// });
 
 Route::post('/forgot-password', [ForgotPasswordController::class, 'submitForgotPassword']);
 
