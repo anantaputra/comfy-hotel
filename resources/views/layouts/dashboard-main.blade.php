@@ -21,6 +21,10 @@
     {{-- datepicker tailwind --}}
     <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/datepicker.bundle.js"></script>
 
+    {{-- midtrans js --}}
+    <script id="midtrans-script" type="text/javascript"src="https://api.midtrans.com/v2/assets/js/midtrans-new-3ds.min.js"data-environment="sandbox"data-client-key="SB-Mid-client-kg7ESatio1iCaYc_"></script>
+
+
     <script>
         function today(){
             const today = new Date()

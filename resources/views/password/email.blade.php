@@ -1,3 +1,4 @@
+{{-- content of email forgot password request --}}
 <h1>Forget Password Email</h1>
    
 You can reset password from bellow link:<br>

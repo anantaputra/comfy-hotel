@@ -2,6 +2,7 @@
 
 @section('container')
 
+{{-- looping for the hotels list --}}
 @foreach ($hotels as $hotel)
     
     <div class="w-full h-auto p-6 bg-white rounded-md shadow-sm mt-2 mb-4">
